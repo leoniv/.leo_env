@@ -2,9 +2,9 @@
 
 It's personal settings. Forks repo and customize for self.
 
-## Dotfiles
+Instalation move old dotfiles and directories to `.filename.leo_env.origin`
 
-Instalation move old dotfiles to `.filenem.origin`
+## Dotfiles
 
 **Imported dotfiles**
 
@@ -14,8 +14,14 @@ Instalation move old dotfiles to `.filenem.origin`
 contain `[user]` section with personal name and e-mail of settings owner!
 * [.gitignore](./home/.gitignore) - global git ignore
 * [.inputrc](./home/.inputrc) - bash vim like input mode
+* [.minttyrc](./home/.minttyrc) - settings for cygwin terminal `mintty` with dark solarized color scheme
 
 ## Vim
+
+**Imported dotfiles**
+
+* [.vim](./home/.vim) - vim config directory
+* [.vimrc](./home/.vimrc) - vim config file
 
 ### Plugins
 
