@@ -1,3 +1,7 @@
+[user]
+  email = leoniv.vlasov@gmail.com
+  name = Leonid Vlasov
+
 [core]
   autocrlf = false
   editor = vi
@@ -38,7 +42,6 @@
 
 [mergetool]
   keepBackup = false
-
 
 [mergetool "bc3"]
   cmd = beyondcompare-merge.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
