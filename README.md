@@ -16,6 +16,10 @@ contain `[user]` section with personal name and e-mail of settings owner!
 * [.inputrc](./home/.inputrc) - bash vim like input mode
 * [.minttyrc](./home/.minttyrc) - settings for cygwin terminal `mintty` with dark solarized color scheme
 
+## Fonts
+
+Install manually [fonts](./fonts)
+
 ## Vim
 
 **Imported dotfiles**
