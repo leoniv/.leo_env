@@ -1,9 +1,14 @@
-# Env for work in console
+# Leo's env for work in console
 
-## Home env
+## Dotfiles
+
+Instalation move old dotfiles to `.filenem.origin`
+
+**Imported dotfiles**
 
 * [.ctags](./home/.ctags)
-* []
+* [.gemrc](./home/.gemrc)
+* [.gitconfig](./home/.gitconfig)
 
 ## Vim
 
