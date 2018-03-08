@@ -1,5 +1,6 @@
 module LeoEnvHelper
   class DotFile
+    require 'fileutils'
     ORIGN_SUFF = '.leo_env.origin'
 
     attr_reader :path, :home
