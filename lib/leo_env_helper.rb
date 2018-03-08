@@ -65,17 +65,9 @@ module LeoEnvHelper
         dot_file.link
       end
 
-      get_vundle
-
-      run_vim
-    end
-
-    def run_vim
-      $stderr.puts 'FIXME'
-    end
-
-    def get_vundle
       Vandler.new.clone
+
+      Vim.new.plugin_install
     end
   end
 
@@ -92,6 +84,12 @@ module LeoEnvHelper
     def clone
       return if exist?
       `git clone #{GITHUB} #{bundle_dir}/vundle`
+    end
+  end
+
+  class Vim
+    def plugin_install
+      system('vim --noplugin -u ~/.vim/vundles.vim -N "+set hidden" "+syntax on" +BundleClean! +BundleInstall +qall')
     end
   end
 end
