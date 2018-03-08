@@ -44,3 +44,8 @@ function! MyFilename()
 endfunction
 " Use status bar even with single buffer
 set laststatus=2
+
+
+" Bundle "xsunsmile/showmarks.git"
+" Tell showmarks to not include the various brace marks (),{}, etc
+let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY"
