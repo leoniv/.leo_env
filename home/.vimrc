@@ -220,20 +220,9 @@ map <F9> zG
 map <S-F9> zuG
 
 " ================ Plugin settings ========================
-"FIXME so ~/.yadr/vim/settings.vim
+so ~/.vim/settings.vim
 
-" ================ asciidoc ================
-"FIXME Plugin 'mjakl/vim-asciidoc'
 
-"FIXME " ================ ColorScheme ================
-"FIXME
-"FIXME colorscheme solarized
-"FIXME set background=dark
-"FIXME let g:solarized_termcolors=256
-"FIXME let g:solarized_contrast="low"
-"FIXME let g:solarized_visibility="low"
-"FIXME call togglebg#map("<F5>")
-"FIXME
 "FIXME " ================ Plugins ================
 "FIXME " NERDTree
 "FIXME nmap <Tab> :NERDTreeToggle <CR>

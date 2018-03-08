@@ -12,4 +12,16 @@ call vundle#rc()
 " let Vundle manage Vundle (required)
 Bundle "gmarik/vundle"
 
+runtime appearance.vundle
+runtime git.vundle
+"runtime ruby.vundle
+"runtime languages.vundle
+"runtime textobjects.vundle
+"runtime search.vundle
+"runtime project.vundle
+"runtime vim-improvements.vundle
+
+" ================ asciidoc ================
+Plugin 'mjakl/vim-asciidoc'
+
 filetype plugin indent on
