@@ -91,7 +91,7 @@ module LeoEnvHelper
 
     def clone
       return if exist?
-      `git clone #{GITHUB} #{bundle_dir}/vandle`
+      `git clone #{GITHUB} #{bundle_dir}/vundle`
     end
   end
 end
