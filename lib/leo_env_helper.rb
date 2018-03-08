@@ -1,4 +1,6 @@
 module LeoEnvHelper
+  REPO_ROOT = File.expand_path('../../', __FILE__)
+
   class DotFile
     require 'fileutils'
     ORIGN_SUFF = '.leo_env.origin'
@@ -45,7 +47,6 @@ module LeoEnvHelper
   end
 
   class Installer
-    REPO_ROOT = File.expand_path('../../', __FILE__)
     attr_reader :home
     def initialize(home)
       @home = home
@@ -64,11 +65,33 @@ module LeoEnvHelper
         dot_file.link
       end
 
+      get_vundle
+
       run_vim
     end
 
     def run_vim
       $stderr.puts 'FIXME'
+    end
+
+    def get_vundle
+      Vandler.new.clone
+    end
+  end
+
+  class Vandler
+    GITHUB = 'https://github.com/gmarik/vundle.git'
+    def bundle_dir
+      FileUtils.mkdir_p(File.join(REPO_ROOT, 'home/.vim', 'bundle'))[0]
+    end
+
+    def exist?
+      File.exist?(File.join(bundle_dir, 'vundle', '.git'))
+    end
+
+    def clone
+      return if exist?
+      `git clone #{GITHUB} #{bundle_dir}/vandle`
     end
   end
 end
