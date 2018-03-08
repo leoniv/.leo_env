@@ -11,3 +11,4 @@ home/.vim/bundle
 home/.vim/sessions
 .netrwhist
 tags
+tmp/
