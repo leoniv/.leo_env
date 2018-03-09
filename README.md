@@ -1,6 +1,6 @@
-# Leo's env for work in console
+# Leo's env for working in terminal
 
-It's personal settings. Forks repo and customize for self.
+It's personal settings! Forks repo and customize for self.
 
 ## Dotfiles
 
