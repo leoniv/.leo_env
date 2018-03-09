@@ -13,6 +13,7 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁ
 " ================ Spelling ================
 
 "setlocal spell spelllang=ru_yo,en_us
+hi SpellBad cterm=underline
 set wildmenu
 set wcm=<Tab>
 
