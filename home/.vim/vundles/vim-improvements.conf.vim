@@ -31,3 +31,15 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" Bundle "svermeulen/vim-easyclip"
+" Resolves collision with marks
+
+let g:EasyClipUseCutDefaults = 0
+
+nmap z <Plug>MoveMotionPlug
+xmap z <Plug>MoveMotionXPlug
+nmap zz <Plug>MoveMotionLinePlug
+
+" Directrly system clipboard
+set clipboard=unnamed
