@@ -31,4 +31,3 @@ Install manually [fonts](./fonts)
 
 * [CtrlP](fixme)
 * [Tagbar](fixme)
-* 
