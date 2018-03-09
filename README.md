@@ -18,6 +18,11 @@ contain `[user]` section with owner's personal name and e-mail!
 dark solarized color scheme
 * [.vim](./home/.vim) - vim config directory
 * [.vimrc](./home/.vimrc) - vim config file
+* [.bash_completion](./home/.bash_completion) - does't forgot includes files
+into your * `~/.bashrc` like:
+```sh
+. ~/.bash_completion/*
+```
 
 ## Fonts
 
