@@ -5,3 +5,4 @@ Bundle "ctrlpvim/ctrlp.vim"
 ""Bundle 'junegunn/fzf'
 Bundle "xolox/vim-misc"
 Bundle "xolox/vim-session"
+Bundle "majutsushi/tagbar"
