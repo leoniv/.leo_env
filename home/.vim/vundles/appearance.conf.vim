@@ -4,7 +4,6 @@ set background=dark
 let g:solarized_termcolors=256
 let g:solarized_contrast="low"
 let g:solarized_visibility="low"
-call togglebg#map("<F12>")
 
 "Bundle "itchyny/lightline.vim"
 

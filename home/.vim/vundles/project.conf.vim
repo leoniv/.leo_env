@@ -17,4 +17,4 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_focus_on_files = 1
 
 " Bundle "majutsushi/tagbar"
-nmap <F11> :TagbarToggle<CR>
+nmap <F12> :TagbarToggle<CR>
