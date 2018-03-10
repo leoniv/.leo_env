@@ -32,10 +32,10 @@ contain `[user]` section with owner's personal name and e-mail!
 dark solarized color scheme
 * [.vim](./home/.vim) - vim config directory
 * [.vimrc](./home/.vimrc) - vim config file
-* [.bash_completion](./home/.bash_completion) - does't forget to include files
+* [.bash_completion.d](./home/.bash_completion.d) - does't forget to include files
 into your * `~/.bashrc` like:
 ```sh
-. ~/.bash_completion/*
+. ~/.bash_completion.d/*
 ```
 * [.Xresources](home/.Xresources) - solarized them for xterm
 
