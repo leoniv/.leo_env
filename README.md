@@ -2,11 +2,17 @@
 
 It's personal settings! Forks repo and customize for self.
 
-## Fonts
+## Installation
+
+> Installation move old dotfiles and directories to `.filename.leo_env.origin`
+
+    $cd ~ && git clone https://github.com/leoniv/.leo_env.git && cd .leo_env && ./install.rb
+
+### Fonts
 
 Install fonts manually [fonts](./fonts)
 
-## Solarized terminal require!
+### Solarized terminal require!
 
 * `mytty` - configured automatically in `.minttyrc`
 * `xterm` - exec `xrdb --merge ~/.Xresources`
@@ -43,11 +49,5 @@ grouped in a groups in [settings](home/.vim/settings) directory.
 Plugins defined in [vundles](home/.vim/vundles/) directory and grouped in a
 groups in the `group.vandle` files. Plugins settings defined in
 `group.conf.vim` files.
-
-## Installation
-
-> Installation move old dotfiles and directories to `.filename.leo_env.origin`
-
-    $cd ~ && git clone https://github.com/leoniv/.leo_env.git && cd .leo_env && ./install.rb
 
 ## Enjoy :)
