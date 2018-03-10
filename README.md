@@ -48,7 +48,7 @@ into your * `~/.bashrc` like:
 ```sh
 . ~/.bash_completion.d/*
 ```
-* [.Xresources](home/.Xresources) - solarized them for xterm
+* [.Xresources](home/.Xresources) - solarized theme for xterm
 
 ## Vim settings
 
