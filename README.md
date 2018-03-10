@@ -21,7 +21,7 @@ for example.
 
 ### Fonts
 
-Install fonts manually from [fonts](./fonts)
+Install [fonts](./fonts) manually.
 
 ### Solarized terminal require!
 
