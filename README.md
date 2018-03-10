@@ -8,6 +8,17 @@ It's personal settings! Forks repo and customize for self.
 
     $cd ~ && git clone https://github.com/leoniv/.leo_env.git && cd .leo_env && ./install.rb
 
+### Vim
+
+For all functionality require `Vim` with `+ruby, +lua, +python` etc. Check
+your vim:
+
+     :verson
+
+If require to build Vim from sources. Building
+[shell script](https://gist.github.com/erickpatrick/5e0923d3645eaf4056b6b9fee4c91e2f)
+for example.
+
 ### Fonts
 
 Install fonts manually [fonts](./fonts)
