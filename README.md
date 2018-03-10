@@ -2,6 +2,16 @@
 
 It's personal settings! Forks repo and customize for self.
 
+## Fonts
+
+Install fonts manually [fonts](./fonts)
+
+## Solarized terminal require!
+
+* `mytty` - configured automatically in `.minttyrc`
+* `xterm` - exec `xrdb --merge ~/.Xresources`
+* `gnome-terminal` - look [gnome-terminal-colors-solarized](https://github.com/Anthony25/gnome-terminal-colors-solarized)
+
 ## Dotfiles
 
 **Imported dotfiles**
@@ -21,10 +31,7 @@ into your * `~/.bashrc` like:
 ```sh
 . ~/.bash_completion/*
 ```
-
-## Fonts
-
-Install manually [fonts](./fonts)
+* [.Xresources](home/.Xresources) - solarized them for xterm
 
 ## Vim settings
 
