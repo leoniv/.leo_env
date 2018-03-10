@@ -1,3 +1,6 @@
+! xterm ----------------------------------------------------------------------
+!
+! Solarized colors for xterm
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -7,12 +10,12 @@
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
 
-*background:            S_base03
-*foreground:            S_base0
-*fadeColor:             S_base03
-*cursorColor:           S_base1
-*pointerColorBackground:S_base01
-*pointerColorForeground:S_base1
+xterm*background:            S_base03
+xterm*foreground:            S_base0
+xterm*fadeColor:             S_base03
+xterm*cursorColor:           S_base1
+xterm*pointerColorBackground:S_base01
+xterm*pointerColorForeground:S_base1
 
 #define S_yellow        #b58900
 #define S_orange        #cb4b16
@@ -24,37 +27,62 @@
 #define S_green         #859900
 
 !! black dark/light
-*color0:                S_base02
-*color8:                S_base03
+xterm*color0:                S_base02
+xterm*color8:                S_base03
 
 !! red dark/light
-*color1:                S_red
-*color9:                S_orange
+xterm*color1:                S_red
+xterm*color9:                S_orange
 
 !! green dark/light
-*color2:                S_green
-*color10:               S_base01
+xterm*color2:                S_green
+xterm*color10:               S_base01
 
 !! yellow dark/light
-*color3:                S_yellow
-*color11:               S_base00
+xterm*color3:                S_yellow
+xterm*color11:               S_base00
 
 !! blue dark/light
-*color4:                S_blue
-*color12:               S_base0
+xterm*color4:                S_blue
+xterm*color12:               S_base0
 
 !! magenta dark/light
-*color5:                S_magenta
-*color13:               S_violet
+xterm*color5:                S_magenta
+xterm*color13:               S_violet
 
 !! cyan dark/light
-*color6:                S_cyan
-*color14:               S_base1
+xterm*color6:                S_cyan
+xterm*color14:               S_base1
 
 !! white dark/light
-*color7:                S_base2
-*color15:               S_base3
+xterm*color7:                S_base2
+xterm*color15:               S_base3
 
-xterm*faceName: Inconsolata LGC
+! Fonts and misc for xterm
+
+xterm*faceName: Inconsolata LGC, Lucida Console
 xterm*faceSize: 11
 xterm*renderFont: true
+XTerm*saveLines: 1000
+xterm*scrollBar: false
+
+xterm*wideChars: true
+xterm*showMissingGlyphs: true
+xterm*selectToClipboard: true
+xterm*dynamicColors:      true
+xterm*cursorBlink:        true
+xterm*locale: UTF-8
+xterm*utf8:               3
+xterm*utf8Fonts: 2
+xterm*eightBitInput:      true
+xterm*scrollKey:          true
+xterm*scrollTtyOutput:    false
+xterm*rightScrollBar:     true
+xterm*jumpScroll:         true
+xterm*multiScroll:        true
+xterm*toolBar:            true
+XTerm*TrimSelection: true
+! copy and paste with clipboard
+xterm*translations: #override \
+    Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)

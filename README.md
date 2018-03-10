@@ -15,7 +15,7 @@ Install fonts manually [fonts](./fonts)
 ### Solarized terminal require!
 
 * `mytty` - configured automatically in `.minttyrc`
-* `xterm` - exec `xrdb --merge ~/.Xresources`
+* `xterm` - exec `xrdb -merge ~/.Xresources`
 * `gnome-terminal` - look [gnome-terminal-colors-solarized](https://github.com/Anthony25/gnome-terminal-colors-solarized)
 
 ## Dotfiles
