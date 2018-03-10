@@ -61,10 +61,11 @@ xterm*color15:               S_base3
 ! Fonts and misc for xterm
 
 xterm*faceName: Inconsolata LGC, Lucida Console
-xterm*faceSize: 11
+xterm*faceSize: 12
 xterm*renderFont: true
-XTerm*saveLines: 1000
+xterm*saveLines: 1000
 xterm*scrollBar: false
+xterm*termName: xterm-256color
 
 xterm*wideChars: true
 xterm*showMissingGlyphs: true
