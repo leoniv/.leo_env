@@ -49,7 +49,7 @@ if has('persistent_undo')
   set undofile
 endif
 
-" ================ Indentation ======================
+"" ================ Indentation ======================
 
 set autoindent
 set smartindent
@@ -67,9 +67,34 @@ set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+set foldmethod=indent   "fold based on indent NOT syntax!!!!
+set foldnestmax=10      "deepest fold is 10 levels
+set foldlevelstart=1
+set foldenable          "dont fold by default
+
+" Space to toggle folds.
+nnoremap <space> za
+vnoremap <space> za
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+nnoremap zO zCzO
+" Use ,z to "focus" the current fold.
+nnoremap <leader>z zMzvzz
+
+function! MyFoldText() " {{{
+  let line = getline(v:foldstart)
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
+  " expand tabs into spaces
+  let onetab = strpart(' ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+
+set foldtext=MyFoldText()
 
 " ================ Completion =======================
 
@@ -86,7 +111,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
-" ================ Scrolling ========================
+"" ================ Scrolling ========================
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
@@ -160,36 +185,6 @@ nnoremap <A-Up> <C-w>+
 nnoremap <A-Down> <C-w>-
 nnoremap <A-Left> <C-w><
 nnoremap <A-Right> <C-w>>
-
-" ================ Folding ================
-
-set foldmethod=syntax
-set foldlevelstart=1
-set foldnestmax=6
-
-" Space to toggle folds.
-nnoremap <space> za
-vnoremap <space> za
-" Make zO recursively open whatever top level fold we're in, no matter where the
-" cursor happens to be.
-nnoremap zO zCzO
-" Use ,z to "focus" the current fold.
-nnoremap <leader>z zMzvzz
-
-function! MyFoldText() " {{{
-  let line = getline(v:foldstart)
-  let nucolwidth = &fdc + &number * &numberwidth
-  let windowwidth = winwidth(0) - nucolwidth - 3
-  let foldedlinecount = v:foldend - v:foldstart
-  " expand tabs into spaces
-  let onetab = strpart(' ', 0, &tabstop)
-  let line = substitute(line, '\t', onetab, 'g')
-  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction " }}}
-
-set foldtext=MyFoldText()
 
 " ================ Plugin settings ========================
 so ~/.vim/settings.vim
