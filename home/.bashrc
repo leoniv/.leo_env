@@ -215,11 +215,15 @@ if [ -f ~/.bash.rc/git-prompt.sh ]; then
   . ~/.bash.rc/git-prompt.sh
   #used to show changes in the prompt for a git folder
   export GIT_PS1_SHOWDIRTYSTATE=1
-  PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\n$ '
+  if [ -n "$(echo `uname` | grep MSYS)" -o -n "$(echo `uname` | grep MINGW)" ]; then
+    PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[35m\]$MSYSTEM \[\e[33m\]\w\[\e[0m\]`__git_ps1 " (%s)"`\n$ '
+  else
+    PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]`__git_ps1 " (%s)"`\n$ '
+  fi
 fi
 
 # Fix PATH in cygwin
-if [ -f /bin/cygpath.exe ]; then
+if [ ! -z "$(echo `uname` | grep CYGWIN)" ]; then
   OLD_PATH=$PATH
   export PATH="/usr/local/bin:/bin:/usr/local/sbin"
   export PATH="$PATH:$OLD_PATH"
