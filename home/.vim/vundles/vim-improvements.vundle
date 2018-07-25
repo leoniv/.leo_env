@@ -22,3 +22,5 @@ Bundle "editorconfig/editorconfig-vim"
 ""Bundle "vim-scripts/AutoTag.git"
 ""Bundle "tpope/vim-unimpaired"
 ""Bundle "tpope/vim-abolish"
+
+Bundle "Konfekt/FastFold"
