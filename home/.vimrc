@@ -34,6 +34,12 @@ if filereadable(expand("~/.vim/vundles.vim"))
   source ~/.vim/vundles.vim
 endif
 
+" ============== Plug Initialization ================
+
+if filereadable(expand("~/.vim/plugged.vim"))
+  source ~/.vim/plugged.vim
+endif
+
 " ================ Turn Off Swap Files ==============
 
 set noswapfile

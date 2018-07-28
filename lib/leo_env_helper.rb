@@ -65,9 +65,8 @@ module LeoEnvHelper
         dot_file.link
       end
 
-      Vandler.new.clone
-
-      Vim.new.plugin_install
+      Vandler.new.setup.plugin_install
+      Plug.new.setup.plugin_install
     end
   end
 
@@ -85,11 +84,49 @@ module LeoEnvHelper
       return if exist?
       `git clone #{GITHUB} #{bundle_dir}/vundle`
     end
-  end
 
-  class Vim
+    def setup
+      clone
+      self
+    end
+
     def plugin_install
       system('vim --noplugin -u ~/.vim/vundles.vim -N "+set hidden" "+syntax on" +BundleClean! +BundleInstall +qall')
+    end
+  end
+
+  class Plug
+    GITHUB = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+    def plugged_dir
+      FileUtils.mkdir_p(File.join(REPO_ROOT, 'home/.vim', 'plugged'))[0]
+    end
+
+    def plug_dir
+      FileUtils.mkdir_p(File.join(REPO_ROOT, 'home/.vim/autoload'))[0]
+    end
+
+    def plug_file
+      File.join(plug_dir, 'plug.vim')
+    end
+
+    def exist?
+      File.exist?(plug_file)
+    end
+
+    def setup
+      plugged_dir
+      clone
+      self
+    end
+
+    def clone
+      return if exist?
+      `curl -fLo #{plug_file} --create-dirs #{GITHUB}`
+    end
+
+    def plugin_install
+      system('vim --noplugin -u ~/.vim/plugged.vim -N "+set hidden" -N "+PlugInstall --sync" +qall')
     end
   end
 end

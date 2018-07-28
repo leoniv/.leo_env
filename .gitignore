@@ -8,6 +8,8 @@ home/.vim/after/.vimrc.after
 home/.vim/.vundles.local
 home/.vim/.vundles.local.bak
 home/.vim/bundle
+home/.vim/plugged
+home/.vim/autoload/plug.vim
 home/.vim/sessions
 .netrwhist
 tags
