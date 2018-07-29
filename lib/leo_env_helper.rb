@@ -65,33 +65,7 @@ module LeoEnvHelper
         dot_file.link
       end
 
-#FIXME      Vandler.new.setup.plugin_install
       Plug.new.setup.plugin_install
-    end
-  end
-
-  class Vandler
-    GITHUB = 'https://github.com/gmarik/vundle.git'
-    def bundle_dir
-      FileUtils.mkdir_p(File.join(REPO_ROOT, 'home/.vim', 'bundle'))[0]
-    end
-
-    def exist?
-      File.exist?(File.join(bundle_dir, 'vundle', '.git'))
-    end
-
-    def clone
-      return if exist?
-      `git clone #{GITHUB} #{bundle_dir}/vundle`
-    end
-
-    def setup
-      clone
-      self
-    end
-
-    def plugin_install
-      system('vim --noplugin -u ~/.vim/vundles.vim -N "+set hidden" "+syntax on" +BundleClean! +BundleInstall +qall')
     end
   end
 

@@ -56,8 +56,20 @@ grouped in a groups in [settings](home/.vim/settings) directory.
 
 ## Vim pugins
 
-Plugins defined in [vundles](home/.vim/vundles/) directory and grouped in a
-groups in the `group.vandle` files. Plugins settings defined in
+From `v2.+` here is using [vim-plug](https://github.com/junegunn/vim-plug) plugin
+manager.
+
+Plugins defined in [plugs](home/.vim/plugs/) directory and grouped in a
+groups in the `group.plug` files. Plugins settings defined in
 `group.conf.vim` files.
+
+## [Neovim](https://neovim.io/)
+
+Define nvim settings manually. In `~/.config/nvim/init.vim` add strings:
+```vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+```
 
 ## Enjoy :)
