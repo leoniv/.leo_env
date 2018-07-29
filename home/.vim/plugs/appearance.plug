@@ -1,4 +1,4 @@
 Plug 'skwp/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
-Plug 'xsunsmile/showmarks.git'
+Plug 'xsunsmile/showmarks'

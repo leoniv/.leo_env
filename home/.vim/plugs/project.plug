@@ -1,5 +1,5 @@
-Plug 'jistr/vim-nerdtree-tabs.git'
-Plug 'scrooloose/nerdtree.git'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 ""Plug 'JazzCore/ctrlp-cmatcher'
 ""Plug 'junegunn/fzf'
