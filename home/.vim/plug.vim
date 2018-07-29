@@ -3,12 +3,11 @@ Plug 'junegunn/vim-plug'
 
 set rtp+=~/.vim/plugs/ "Submodules
 runtime appearance.plug
-
-"runtime git.vundle
-"runtime languages.vundle
-"runtime ruby.vundle
-"runtime vim-improvements.vundle
-"runtime project.vundle
-"runtime search.vundle
+runtime git.plug
+runtime languages.plug
+runtime ruby.plug
+runtime vim-improvements.plug
+runtime project.plug
+runtime search.plug
 
 call plug#end()

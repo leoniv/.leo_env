@@ -1,1 +1,1 @@
-Bundle "nelstrom/vim-visual-star-search"
+Plug 'nelstrom/vim-visual-star-search'

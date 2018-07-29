@@ -1,2 +1,2 @@
-Bundle "tpope/vim-fugitive"
-Bundle "tpope/vim-git"
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'

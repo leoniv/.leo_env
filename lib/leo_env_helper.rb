@@ -126,7 +126,7 @@ module LeoEnvHelper
     end
 
     def plugin_install
-      system('vim --noplugin -u ~/.vim/plugged.vim -N "+set hidden" -N "+PlugInstall --sync" +qall')
+      system('vim --noplugin -u ~/.vim/plug.vim -N "+set hidden" -N "+PlugInstall --sync" +qall')
     end
   end
 end
