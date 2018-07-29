@@ -65,7 +65,7 @@ module LeoEnvHelper
         dot_file.link
       end
 
-      Vandler.new.setup.plugin_install
+#FIXME      Vandler.new.setup.plugin_install
       Plug.new.setup.plugin_install
     end
   end

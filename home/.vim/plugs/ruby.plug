@@ -1,0 +1,6 @@
+Bundle "vim-ruby/vim-ruby.git"
+"Bundle "ecomba/vim-ruby-refactoring"
+"Bundle "tpope/vim-rails.git"
+"Bundle "tpope/vim-rake.git"
+"Bundle "tpope/vim-rvm.git"
+"Bundle "keith/rspec.vim"
