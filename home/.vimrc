@@ -67,8 +67,6 @@ set linebreak    "Wrap lines at convenient points
 " ================ Folds ============================
 
 set foldmethod=syntax   "syntax may be very slow!
-                        "for vim-ruby try to play with :let ruby_foldable_groups
-                        "see :help ruby_foldable_groups
 set foldnestmax=10      "deepest fold is 10 levels
 set foldlevelstart=1
 set foldenable          "dont fold by default
