@@ -10,14 +10,7 @@ It's personal settings! Forks repo and customize for self.
 
 ### Vim
 
-For all functionality require `Vim` with `+ruby, +lua, +python` etc. Check
-your vim:
-
-     $vim --version
-
-If require to build Vim from sources. Building
-[shell script](https://gist.github.com/erickpatrick/5e0923d3645eaf4056b6b9fee4c91e2f)
-for example.
+For all functionality require `Vim` > 8.0 or `Neovim`
 
 ### Fonts
 
@@ -71,5 +64,10 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 ```
+
+## Requirements
+
+- gem [solargraph](https://github.com/castwide/solargraph) - language server for
+Ruby.
 
 ## Enjoy :)
