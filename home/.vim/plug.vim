@@ -8,6 +8,7 @@ runtime languages.plug
 runtime vim-improvements.plug
 runtime comleters.plug
 runtime ruby.plug
+runtime web.plug
 runtime project.plug
 runtime search.plug
 

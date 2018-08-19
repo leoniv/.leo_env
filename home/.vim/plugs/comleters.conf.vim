@@ -29,3 +29,11 @@ call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
 \ 'completor': function('asyncomplete#sources#omni#completor')
 \  }))
 
+" npm i -g bash-language-server
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'whitelist': ['sh'],
+        \ })
+endif
