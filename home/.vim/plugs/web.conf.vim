@@ -1,19 +1,21 @@
-" npm i -g javascript-typescript-langserver
-if executable('javascript-typescript-stdio')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'javascript-typescript-language',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'javascript-typescript-stdio']},
-        \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
-        \ })
-endif
+if !exists('g:gui_oni')
+  " npm i -g javascript-typescript-langserver
+  if executable('javascript-typescript-stdio')
+    au User lsp_setup call lsp#register_server({
+          \ 'name': 'javascript-typescript-language',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'javascript-typescript-stdio']},
+          \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
+          \ })
+  endif
 
-" npm i -g vscode-html-languageserver-bin
-if executable('html-languageserver')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'html-languageserver',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
-        \ 'whitelist': ['html', 'css', 'scss']
-        \ })
+  " npm i -g vscode-html-languageserver-bin
+  if executable('html-languageserver')
+    au User lsp_setup call lsp#register_server({
+          \ 'name': 'html-languageserver',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
+          \ 'whitelist': ['html', 'css', 'scss']
+          \ })
+  endif
 endif
 
 " Plug 'mattn/emmet-vim'
