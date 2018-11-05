@@ -37,3 +37,15 @@ if executable('bash-language-server')
         \ 'whitelist': ['sh'],
         \ })
 endif
+
+if !exists('g:gui_oni')
+  " Haskell https://github.com/haskell/haskell-ide-engine
+  if executable('hie')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'haskell-ide-engine',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'stack exec -- hie --lsp']},
+      \ 'root_uri':{server_info->lsp#utils#path_to_uri(systemlist('git rev-parse --show-toplevel')[0])},
+      \ 'whitelist': ['haskell']
+      \ })
+  endif
+endif
