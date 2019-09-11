@@ -238,3 +238,7 @@ export TERM='xterm-256color'
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/leo/.sdkman"
+[[ -s "/home/leo/.sdkman/bin/sdkman-init.sh" ]] && source "/home/leo/.sdkman/bin/sdkman-init.sh"
