@@ -1,86 +1,67 @@
 set nocompatible
 
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
-endif
+function s:LoadVimrcBefore()
+  if filereadable(expand("~/.vimrc.before"))
+    source ~/.vimrc.before
+  endif
+endfunction
+call s:LoadVimrcBefore()
 
-"=== General sesttings ===
+function s:SetGeneralOptions()
+  let g:mapleader=","
+  set number                      "Line numbers are good
+  set backspace=indent,eol,start  "Allow backspace in insert mode
+  set history=1000                "Store lots of :cmdline history
+  set showcmd                     "Show incomplete cmds down the bottom
+  set showmode                    "Show current mode down the bottom
+  set gcr=a:blinkon0              "Disable cursor blink
+  set visualbell                  "No sounds
+  set autoread                    "Reload files changed outside vim
+  " This makes vim act like all other editors, buffers can
+  " exist in the background without being in a window.
+  " http://items.sjbach.com/319/configuring-vim-right
+  set hidden
+  syntax on "turn on syntax highlighting
+endfunction
+call s:SetGeneralOptions()
 
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
+function s:LoadPlugins()
+  if filereadable(expand("~/.vim/plug.vim"))
+    source ~/.vim/plug.vim
+  endif
+endfunction
+call s:LoadPlugins()
 
-syntax on "turn on syntax highlighting
+function s:SetSwapTurnOff()
+  set noswapfile
+  set nobackup
+  set nowb
+endfunction
+call s:SetSwapTurnOff()
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
-
-" ============== Plug Initialization ================
-
-if filereadable(expand("~/.vim/plug.vim"))
-  source ~/.vim/plug.vim
-endif
-
-" ================ Turn Off Swap Files ==============
-
-set noswapfile
-set nobackup
-set nowb
-
-" ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
-if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
+function s:SetPersistentUndo()
+  if has('persistent_undo')
+    silent !mkdir ~/.vim/backups > /dev/null 1>&1
+    set undodir=~/.vim/backups
+    set undofile
+  endif
+endfunction
+call s:SetPersistentUndo()
 
-"" ================ Indentation ======================
+function s:SetIndentation()
+  set autoindent
+  set smartindent
+  set smarttab
+  set shiftwidth=2
+  set softtabstop=2
+  set tabstop=2
+  set expandtab
+endfunction
+call s:SetIndentation()
 
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
-
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
-
-" ================ Folds ============================
-
-set foldmethod=syntax   "syntax may be very slow!
-set foldnestmax=10      "deepest fold is 10 levels
-set foldlevelstart=1
-set foldenable          "dont fold by default
-
-" Space to toggle folds.
-nnoremap <space> za
-vnoremap <space> za
-" Make zO recursively open whatever top level fold we're in, no matter where the
-" cursor happens to be.
-nnoremap zO zCzO
-" Use ,z to "focus" the current fold.
-nnoremap <leader>z zMzvzz
-
-function! MyFoldText() " {{{
+function! MyFoldText()
   let line = getline(v:foldstart)
   let nucolwidth = &fdc + &number * &numberwidth
   let windowwidth = winwidth(0) - nucolwidth - 3
@@ -91,99 +72,118 @@ function! MyFoldText() " {{{
   let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
   let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
   return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction " }}}
+endfunction
 
-set foldtext=MyFoldText()
+function s:SetFolding()
+  set foldmethod=syntax   "syntax may be very slow!
+  set foldnestmax=10      "deepest fold is 10 levels
+  set foldlevelstart=1
+  set foldenable          "dont fold by default
+  " Space to toggle folds.
+  nnoremap <space> za
+  vnoremap <space> za
+  nnoremap <leader>z zMzvzz
+  nnoremap zO zCzO
+  set foldtext=MyFoldText()
+endfunction
+call s:SetFolding()
 
-" ================ Completion =======================
+function s:SetCompletion()
+  set wildmode=list:longest
+  set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+  set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+  set wildignore+=*vim/backups*
+  set wildignore+=*sass-cache*
+  set wildignore+=*DS_Store*
+  set wildignore+=vendor/rails/**
+  set wildignore+=vendor/cache/**
+  set wildignore+=*.gem
+  set wildignore+=log/**
+  set wildignore+=tmp/**
+  set wildignore+=*.png,*.jpg,*.gif
+endfunction
+call s:SetCompletion()
 
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+function s:SetScrolling()
+  set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+  set sidescrolloff=15
+  set sidescroll=1
+endfunction
+call s:SetScrolling()
 
-"" ================ Scrolling ========================
+function s:SetSearch()
+  set incsearch       " Find the next match as we type the search
+  set hlsearch        " Highlight searches by default
+  set ignorecase      " Ignore case when searching...
+  set smartcase       " ...unless we type a capital
+  nnoremap / /\v
+  vnoremap / /\v
+  " Searching Don't jump when using * && # for search
+  nnoremap * *<c-o>
+  nnoremap # *<c-o>
+endfunction
+call s:SetSearch()
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+function s:SetApprearance()
+  set wrap
+  set linebreak
+  set textwidth=80
+  if exists('+colorcolumn')
+    set colorcolumn=+1
+  endif
+endfunction
+call s:SetApprearance()
 
-" ================ Search ===========================
+function s:SetShowHiddenChars()
+  set list listchars=tab:▸\ ,eol:¬,precedes:«,extends:»,trail:␣
+  set showbreak=↪
+  " Only shown when not in insert mode so I don't go insane.
+  augroup trailing
+    au!
+    au InsertEnter * :set listchars-=trail:␣
+    au InsertLeave * :set listchars+=trail:␣
+  augroup END
+endfunction
+call s:SetShowHiddenChars()
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+function s:SetEasyWindowsNavigation()
+  noremap <C-h> <C-w>h
+  noremap <C-j> <C-w>j
+  noremap <C-k> <C-w>k
+  noremap <C-l> <C-w>l
+endfunction
+call s:SetEasyWindowsNavigation()
 
-" ================ Apprearance ================
-" Srting wrapping
-set wrap
-set linebreak
-set textwidth=80
+function s:SetEasySplit()
+  nnoremap <leader>v <C-w>v<C-w>l
+  nnoremap <leader>h <C-w>s<C-w>j
+endfunction
+call s:SetEasySplit()
 
-if exists('+colorcolumn')
-  set colorcolumn=+1
-endif
+function s:SetReselectVisualBlockAfterIndent()
+  vnoremap < <gv
+  vnoremap > >gv
+endfunction
+call s:SetReselectVisualBlockAfterIndent()
 
-" Show hidden char
-set listchars=tab:▸\ ,eol:¬,precedes:«,extends:»,trail:␣
-set showbreak=↪
+function s:SetEasyBubbingLines()
+  nmap <C-Up> [e
+  nmap <C-Down> ]e
+  vmap <C-Up> [egv
+  vmap <C-Down> ]egv
+endfunction
+call s:SetEasyBubbingLines()
 
-" Only shown when not in insert mode so I don't go insane.
-augroup trailing
-  au!
-  au InsertEnter * :set listchars-=trail:␣
-  au InsertLeave * :set listchars+=trail:␣
-augroup END
-" Remove trailing whitespaces when saving
-" Wanna know more? http://vim.wikia.com/wiki/Remove_unwanted_spaces
-" If you want to remove trailing spaces when you want, so not automatically,
-" see
-" http://vim.wikia.com/wiki/Remove_unwanted_spaces#Display_or_remove_unwanted_whitespace_with_a_script.
-autocmd BufWritePre * :%s/\s\+$//e
+function s:SetEasyResizeWindow()
+  nnoremap <A-Up> <C-w>+
+  nnoremap <A-Down> <C-w>-
+  nnoremap <A-Left> <C-w><
+  nnoremap <A-Right> <C-w>>
+endfunction
+call s:SetEasyResizeWindow()
 
-" ================ Searching ================
-nnoremap / /\v
-vnoremap / /\v
-" Searching Don't jump when using * && # for search
-nnoremap * *<c-o>
-nnoremap # *<c-o>
+function s:LoadPluginSettings()
+  so ~/.vim/settings.vim
+endfunction
+call s:LoadPluginSettings()
 
-" ================ Navigation && Windows ================
-
-" Easy window navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
-" Splits ,v and ,h to open new splits (vertical and horizontal)
-nnoremap <leader>v <C-w>v<C-w>l
-nnoremap <leader>h <C-w>s<C-w>j
-
-" Reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-
-" Bubbling lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-
-" Resize windows with arrow keys
-nnoremap <A-Up> <C-w>+
-nnoremap <A-Down> <C-w>-
-nnoremap <A-Left> <C-w><
-nnoremap <A-Right> <C-w>>
-
-" ================ Plugin settings ========================
-so ~/.vim/settings.vim
