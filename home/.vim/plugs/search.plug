@@ -1,6 +1,5 @@
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'majutsushi/tagbar'
-Plug 'Shougo/unite.vim'
 
 "Plug 'skwp/YankRing.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
