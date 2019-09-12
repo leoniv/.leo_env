@@ -1,1 +1,2 @@
-"Plug 'skwp/YankRing.vim'
+"Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
