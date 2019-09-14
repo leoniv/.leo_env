@@ -1,1 +1,6 @@
 Plug 'Shougo/unite.vim'
+Plug 'thinca/vim-unite-history'
+Plug 'Shougo/unite-help'
+Plug 'Shougo/unite-outline'
+Plug 'sgur/unite-qf'
+Plug 'ujihisa/unite-haskellimport'
