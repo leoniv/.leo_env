@@ -1,5 +1,3 @@
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/nerdtree'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'editorconfig/editorconfig-vim'
