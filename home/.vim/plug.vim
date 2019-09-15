@@ -13,5 +13,6 @@ runtime lang.other.plug
 runtime project.plug
 runtime search.plug
 runtime test.plug
+runtime lang.java.plug
 
 call plug#end()
