@@ -12,5 +12,6 @@ runtime linters.plug
 runtime lang.other.plug
 runtime project.plug
 runtime search.plug
+runtime test.plug
 
 call plug#end()
