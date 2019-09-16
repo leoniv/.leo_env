@@ -33,3 +33,11 @@ function s:NeomakeDisableForJava()
   augroup END
 endfunction
 call s:NeomakeDisableForJava()
+
+function s:NeomakeDisableForRuby()
+  augroup neomake_ruby
+    au!
+    au FileType ruby :NeomakeDisableBuffer
+  augroup END
+endfunction
+call s:NeomakeDisableForRuby()
