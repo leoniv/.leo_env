@@ -1,0 +1,25 @@
+{
+  "diagnostic.enableSign": true,
+  "diagnostic.enable": true,
+  "diagnostic.level": "hint",
+  "diagnostic.errorSign": "E",
+  "diagnostic.hintSign": "H",
+  "diagnostic.infoSign": "I",
+  "diagnostic.warningSign": "W",
+  "diagnostic.messageTarget": "float",
+  "diagnostic.enableMessage": "always",
+
+  "signature.target": "float",
+
+  "codeLens.enable": true,
+
+  "solargraph.useBundler": false,
+  "solargraph.diagnostics": true,
+  "solargraph.hover": true,
+  "solargraph.completion": true,
+  "solargraph.symbols": true,
+  "solargraph.transport": "stdio",
+  "solargraph.definitions": true,
+  "solargraph.formatting": true,
+  "solargraph.references": true
+}
