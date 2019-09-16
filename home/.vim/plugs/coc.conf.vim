@@ -11,3 +11,8 @@ function s:SetTabRemap() abort
         \ coc#refresh()
 endfunction
 call s:SetTabRemap()
+
+function s:DefineCommands() abort
+  command! RenameCurrent :CocCommand document.renameCurrentWord
+endfunction
+call s:DefineCommands()
