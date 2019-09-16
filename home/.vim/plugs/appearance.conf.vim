@@ -14,9 +14,10 @@ function s:SetLightLineParams()
         \ 'colorscheme': 'solarized',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
-        \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+        \             [ 'coc_status', 'fugitive', 'readonly', 'filename', 'modified' ] ]
         \ },
         \ 'component_function': {
+        \   'coc_status': 'coc#status',
         \   'fugitive': 'MyFugitive',
         \   'readonly': 'MyReadonly',
         \   'filename': 'MyFilename',
