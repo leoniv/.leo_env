@@ -11,7 +11,8 @@
 
   "signature.target": "float",
 
-  "codeLens.enable": true,
+  "codeLens.enable": false,
+  "codeLens.separator": "‣",
 
   "solargraph.useBundler": false,
   "solargraph.diagnostics": true,
@@ -21,5 +22,19 @@
   "solargraph.transport": "stdio",
   "solargraph.definitions": true,
   "solargraph.formatting": true,
-  "solargraph.references": true
+  "solargraph.references": true,
+
+  "java.format.settings.url": "/home/leo/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+  "java.signatureHelp.enabled": true,
+  "java.format.enabled": true,
+  "java.autobuild.enabled": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.completion.guessMethodArguments":  true,
+  "java.codeGeneration.hashCodeEquals.useJava7Objects": true,
+  "java.completion.importOrder": [
+    "java",
+    "javax",
+    "com",
+    "org"
+  ]
 }
