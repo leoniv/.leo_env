@@ -13,12 +13,11 @@ function s:SetEacyClipParams() abort
 endfunction
 call s:SetEacyClipParams()
 
-function s:SetGundoParams() abort
-" Bundle "sjl/gundo.vim"
-nmap <leader>u :GundoToggle<CR>
-  " open on the right so as not to compete with the nerdtree
-  let g:gundo_right = 1
-  " a little wider for wider screens
-  let g:gundo_width = 60
+function s:SetUndoPluginMapping() abort
+  nmap <leader>u :UndotreeToggle<CR>
 endfunction
-call s:SetGundoParams()
+call s:SetUndoPluginMapping()
+
+function s:SetUndotreeParams() abort
+ let g:undotree_SplitWidth = 30
+endfunction
