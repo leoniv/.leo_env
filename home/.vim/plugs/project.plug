@@ -1,3 +1,6 @@
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
