@@ -1,1 +1,2 @@
 Plug 'wsdjeg/java_getset.vim'
+Plug 'udalov/javap-vim'
