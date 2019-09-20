@@ -182,6 +182,14 @@ function s:SetEasyResizeWindow()
 endfunction
 call s:SetEasyResizeWindow()
 
+function s:SetTabNavigationMapping() abort
+  nnoremap <C-t>     :tabnew<CR>
+  nnoremap <C-x>     :tabclose<CR>
+  inoremap <C-t>     <Esc>:tabnew<CR>
+  inoremap <C-x>     :tabclose<CR>
+endfunction
+call s:SetTabNavigationMapping()
+
 function s:LoadPluginSettings()
   so ~/.vim/settings.vim
 endfunction
