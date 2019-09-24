@@ -8,11 +8,25 @@
   "diagnostic.warningSign": "W",
   "diagnostic.messageTarget": "float",
   "diagnostic.enableMessage": "always",
+  "diagnostic.virtualText": false,
+  "diagnostic.virtualTextPrefix": " < ",
+  "diagnostic.locationlist": true,
+  "diagnostic.checkCurrentLine": true,
+  "vimlsp.diagnostic.enable": true,
+  "coc.preferences.jumpCommand": "tabe",
+  "coc.preferences.messageLevel": "error",
+  "coc.preferences.hoverTarget": "float",
 
   "signature.target": "float",
+  "signature.enable": true,
+  "signature.triggerSignatureWait": 150,
+  "signature.hideOnTextChange": true,
 
-  "codeLens.enable": false,
+  "codeLens.enable": true,
   "codeLens.separator": "‣",
+
+  "suggest.enablePreview": true,
+  "suggest.echodocSupport": true,
 
   "solargraph.useBundler": false,
   "solargraph.diagnostics": true,

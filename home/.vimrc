@@ -21,6 +21,7 @@ function s:SetGeneralOptions()
   " exist in the background without being in a window.
   " http://items.sjbach.com/319/configuring-vim-right
   set hidden
+  set noshowmode
   syntax on "turn on syntax highlighting
 endfunction
 call s:SetGeneralOptions()
