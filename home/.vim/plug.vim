@@ -14,5 +14,6 @@ runtime project.plug
 runtime search.plug
 runtime test.plug
 runtime lang.java.plug
+runtime debugger.plug
 
 call plug#end()
