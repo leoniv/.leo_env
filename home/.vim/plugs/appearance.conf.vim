@@ -9,6 +9,7 @@ endfunction
 "call s:SetSolarizedSchemeParams()
 
 function s:SetGruvBoxColorParam() abort
+  set background=dark
   colorscheme gruvbox
 endfunction
 call s:SetGruvBoxColorParam()
@@ -16,6 +17,7 @@ call s:SetGruvBoxColorParam()
 "Bundle "itchyny/lightline.vim"
 function s:SetLightLineParams()
   let g:lightline = {
+        \ 'colorscheme': 'gruvbox',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'coc_status', 'fugitive', 'readonly', 'filename', 'modified' ] ]
@@ -31,9 +33,7 @@ function s:SetLightLineParams()
     if &filetype == "help"
       return ""
     elseif &readonly
-    :q
-    :q
-      return "⭤ "
+      return "RO"
     else
       return ""
     endif
@@ -48,8 +48,7 @@ function s:SetLightLineParams()
   endfunction
 
   function! MyFilename()
-    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-         \ ('' != expand('%') ? expand('%') : '[NoName]')
+    return ('' != expand('%') ? expand('%') : '[NoName]')
   endfunction
   " Use status bar even with single buffer
   set laststatus=2
