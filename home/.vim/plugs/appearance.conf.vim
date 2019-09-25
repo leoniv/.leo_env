@@ -6,12 +6,16 @@ function s:SetSolarizedSchemeParams()
   let g:solarized_contrast="low"
   let g:solarized_visibility="low"
 endfunction
-call s:SetSolarizedSchemeParams()
+"call s:SetSolarizedSchemeParams()
+
+function s:SetGruvBoxColorParam() abort
+  colorscheme gruvbox
+endfunction
+call s:SetGruvBoxColorParam()
 
 "Bundle "itchyny/lightline.vim"
 function s:SetLightLineParams()
   let g:lightline = {
-        \ 'colorscheme': 'solarized',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'coc_status', 'fugitive', 'readonly', 'filename', 'modified' ] ]
@@ -27,6 +31,8 @@ function s:SetLightLineParams()
     if &filetype == "help"
       return ""
     elseif &readonly
+    :q
+    :q
       return "⭤ "
     else
       return ""
