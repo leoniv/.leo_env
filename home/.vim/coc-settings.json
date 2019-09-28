@@ -7,7 +7,7 @@
   "diagnostic.infoSign": "I",
   "diagnostic.warningSign": "W",
   "diagnostic.messageTarget": "float",
-  "diagnostic.enableMessage": "always",
+  "diagnostic.enableMessage": "jump",
   "diagnostic.virtualText": false,
   "diagnostic.virtualTextPrefix": " < ",
   "diagnostic.locationlist": true,
@@ -17,7 +17,7 @@
   "coc.preferences.messageLevel": "error",
   "coc.preferences.hoverTarget": "float",
 
-  "signature.target": "float",
+  "signature.target": "echo",
   "signature.enable": true,
   "signature.triggerSignatureWait": 150,
   "signature.hideOnTextChange": true,
