@@ -1,5 +1,10 @@
+function s:NeomakeIgnoreFileTypes() abort
+  return ['startify', 'ruby', 'java', 'vim', 'groovy', 'js', 'ts', 'sh', 'bash']
+endfunction
+
 function s:SetNeomakeConfig()
   call neomake#configure#automake('w')
+  let g:neomake.automake.ignore_filetypes = s:NeomakeIgnoreFileTypes()
   let g:neomake_cursormoved_delay = 300
   let g:neomake_echo_current_error = 1
   let g:neomake_error_sign = {
@@ -26,18 +31,3 @@ function s:SetNeomakeConfig()
 endfunction
 call s:SetNeomakeConfig()
 
-function s:NeomakeDisableForJava()
-  augroup neomake_java
-    au!
-    au FileType java :NeomakeDisableBuffer
-  augroup END
-endfunction
-call s:NeomakeDisableForJava()
-
-function s:NeomakeDisableForRuby()
-  augroup neomake_ruby
-    au!
-    au FileType ruby :NeomakeDisableBuffer
-  augroup END
-endfunction
-call s:NeomakeDisableForRuby()
