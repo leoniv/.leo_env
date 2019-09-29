@@ -191,8 +191,14 @@ function s:SetTabNavigationMapping() abort
 endfunction
 call s:SetTabNavigationMapping()
 
+function s:SetTerminalMappin() abort
+  if has('nvim')
+    tmap <C-o> <C-\><C-n>
+  endif
+endfunction
+call s:SetTerminalMappin()
+
 function s:LoadPluginSettings()
   so ~/.vim/settings.vim
 endfunction
 call s:LoadPluginSettings()
-
