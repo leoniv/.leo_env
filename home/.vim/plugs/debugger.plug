@@ -1,1 +1,1 @@
-Plug 'idanarye/vim-vebugger'
+Plug 'idanarye/vim-vebugger', {'branch': 'develop'}
