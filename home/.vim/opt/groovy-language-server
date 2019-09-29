@@ -1,0 +1,6 @@
+#!/bin/sh
+JAVA_OPT=""
+GROOVY_LS_JAR=~/.vim/opt/groovy-language-server.jar
+
+JAVA="java -jar $JAVA_OPT $GROOVY_LS_JAR"
+exec $JAVA

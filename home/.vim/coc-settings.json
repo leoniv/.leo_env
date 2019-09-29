@@ -16,18 +16,14 @@
   "coc.preferences.jumpCommand": "tabe",
   "coc.preferences.messageLevel": "error",
   "coc.preferences.hoverTarget": "float",
-
   "signature.target": "echo",
   "signature.enable": true,
   "signature.triggerSignatureWait": 150,
   "signature.hideOnTextChange": true,
-
   "codeLens.enable": true,
   "codeLens.separator": "‣",
-
   "suggest.enablePreview": true,
   "suggest.echodocSupport": true,
-
   "solargraph.useBundler": false,
   "solargraph.diagnostics": true,
   "solargraph.hover": true,
@@ -37,18 +33,25 @@
   "solargraph.definitions": true,
   "solargraph.formatting": true,
   "solargraph.references": true,
-
   "java.format.settings.url": "/home/leo/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
   "java.signatureHelp.enabled": true,
   "java.format.enabled": true,
   "java.autobuild.enabled": true,
   "java.referencesCodeLens.enabled": true,
-  "java.completion.guessMethodArguments":  true,
+  "java.completion.guessMethodArguments": true,
   "java.codeGeneration.hashCodeEquals.useJava7Objects": true,
   "java.completion.importOrder": [
     "java",
     "javax",
     "com",
     "org"
-  ]
+  ],
+  "languageserver": {
+    "groovy": {
+      "command": "~/.vim/opt/groovy-language-server",
+      "filetypes": [
+        "groovy"
+      ]
+    }
+  }
 }
