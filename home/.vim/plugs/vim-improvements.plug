@@ -8,7 +8,6 @@ Plug 'bogado/file-line'
 Plug 'vim-scripts/lastpos.vim'
 Plug 'vim-scripts/sudo.vim'
 Plug 'mbbill/undotree'
-Plug 'VincentCordobes/vim-translate'
 
 ""Plug 'sjl/gundo.vim'
 ""Plug 'vim-scripts/matchit.zip'
