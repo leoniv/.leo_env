@@ -24,6 +24,8 @@
   "codeLens.separator": "‣",
   "suggest.enablePreview": true,
   "suggest.echodocSupport": true,
+  "suggest.removeDuplicateItems": true,
+  "suggest.autoTrigger": "none",
   "solargraph.useBundler": false,
   "solargraph.diagnostics": true,
   "solargraph.hover": true,
@@ -51,7 +53,9 @@
       "command": "~/.vim/opt/groovy-language-server",
       "filetypes": [
         "groovy"
-      ]
+      ],
+      "disableDiagnostics": true,
+      "trace.server": "off"
     }
   }
 }
