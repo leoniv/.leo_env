@@ -21,3 +21,8 @@ call s:SetUndoPluginMapping()
 function s:SetUndotreeParams() abort
  let g:undotree_SplitWidth = 30
 endfunction
+
+function s:TranslateShellParams() abort
+  g:trans_default_direction=ru
+  g:trans_default_engine=ru
+endfunction
