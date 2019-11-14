@@ -239,8 +239,13 @@ if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
 
+export GOPATH=~/.go
+export PATH=$PATH:$GOPATH/bin
+
+LEO_ENV_PATH=~/.leo_env
+export PATH=$PATH:$LEO_ENV_PATH/opt/bin
+
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-export GOPATH=~/.go
-export PATH=$PATH:$GOPATH/bin

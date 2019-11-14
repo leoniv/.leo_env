@@ -21,3 +21,10 @@ call s:SetUndoPluginMapping()
 function s:SetUndotreeParams() abort
  let g:undotree_SplitWidth = 30
 endfunction
+
+function s:SetVimTranslatorParams() abort
+  let g:translate#default_languages = {
+      \ 'ru': 'en',
+      \ 'en': 'ru'
+      \ }
+endfunction

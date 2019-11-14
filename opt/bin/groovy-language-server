@@ -1,0 +1,7 @@
+#!/bin/sh
+java_opt=""
+project_path="$(dirname $0)/.."
+groovy_ls_jar=$project_path/jar/groovy-language-server.jar
+
+java="java -cp ./build -jar $java_opt $groovy_ls_jar"
+exec $java
