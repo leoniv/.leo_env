@@ -39,15 +39,40 @@
   "java.signatureHelp.enabled": true,
   "java.format.enabled": true,
   "java.autobuild.enabled": true,
-  "java.referencesCodeLens.enabled": true,
-  "java.completion.guessMethodArguments": true,
-  "java.codeGeneration.hashCodeEquals.useJava7Objects": true,
+  "java.referencesCodeLens.enabled": false,
   "java.completion.importOrder": [
     "java",
     "javax",
     "com",
     "org"
   ],
+  "java.completion.overwrite": true,
+  "java.completion.favoriteStaticMembers": [
+    "org.junit.Assert.*",
+    "org.junit.Assume.*",
+    "org.junit.jupiter.api.Assertions.*",
+    "org.junit.jupiter.api.Assumptions.*",
+    "org.junit.jupiter.api.DynamicContainer.*",
+    "org.junit.jupiter.api.DynamicTest.*",
+    "org.mockito.Mockito.*",
+    "org.mockito.ArgumentMatchers.*",
+    "org.mockito.Answers.*"
+  ],
+  "java.completion.filteredTypes": [
+        "com.sun.*",
+        "javax.*",
+        "jdk.*",
+        "sun.awt.*",
+        "sun.swing.*",
+        "java.awt.*",
+        "org.graalvm.*",
+        "sun.jvm.*",
+        "org.w3c.*",
+        "org.omg.*"
+  ],
+  "java.implementationsCodeLens.enabled": true,
+  "java.completion.guessMethodArguments": true,
+  "java.trace.server": "verbose",
   "languageserver": {
     "groovy": {
       "command": "~/.vim/opt/groovy-language-server",
@@ -57,5 +82,6 @@
       "disableDiagnostics": true,
       "trace.server": "off"
     }
-  }
+  },
+  "java.errors.incompleteClasspath.severity": "ignore"
 }
