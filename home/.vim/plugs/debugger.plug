@@ -1,1 +1,3 @@
 Plug 'idanarye/vim-vebugger', {'branch': 'develop'}
+Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
+
