@@ -194,6 +194,10 @@ call s:SetTabNavigationMapping()
 function s:SetTerminalMappin() abort
   if has('nvim')
     tmap <C-o> <C-\><C-n>
+    "To map <Esc> to exit terminal-mode: >
+    tnoremap <Esc> <C-\><C-n>
+    "To simulate |i_CTRL-R| in terminal-mode: >
+    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
   endif
 endfunction
 call s:SetTerminalMappin()
