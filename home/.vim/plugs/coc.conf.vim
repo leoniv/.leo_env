@@ -43,5 +43,6 @@ function s:SetCocMapping() abort
   nmap <Leader>l <Plug>(coc-codelens-action)
   nmap <leader>qf <Plug>(coc-fix-current)
   vmap <Leader>sr <Plug>(coc-range-select)
+  nmap <Leader>ws <Plug>(coc-metals-expand-decoration)
 endfunction
 call s:SetCocMapping()
