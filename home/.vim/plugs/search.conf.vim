@@ -5,5 +5,6 @@ call s:SetTagBarMapping()
 
 function s:SetFlyGrepMapping() abort
   nnoremap <leader>g :FlyGrep<cr>
+  let g:spacevim_data_dir = '~/.cache'
 endfunction
 call s:SetFlyGrepMapping()
