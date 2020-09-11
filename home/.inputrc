@@ -1,1 +1,9 @@
 set editing-mode vi
+# cycle forward
+Control-n: menu-complete
+# cycle backward
+Control-p: menu-complete-backward
+TAB:menu-complete
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set menu-complete-display-prefix on

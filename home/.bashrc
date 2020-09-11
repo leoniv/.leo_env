@@ -243,9 +243,10 @@ export GOPATH=~/.go
 export PATH=$PATH:$GOPATH/bin
 
 LEO_ENV_PATH=~/.leo_env
-export PATH=$PATH:$LEO_ENV_PATH/opt/bin
+export PATH=$PATH:$LEO_ENV_PATH/opt/bin:~/.local/bin/
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+alias sbt-vim='vim -c "set nonumber" -c "set laststatus=0" -c "term" -c  "vspl term://sbt"'
