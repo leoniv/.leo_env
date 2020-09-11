@@ -32,3 +32,8 @@ cscope.po.out
 Session.vim
 .netrwhist
 *~
+
+.bloop/
+.metals/
+metals.sbt
+.sbtopts

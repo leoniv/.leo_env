@@ -1,5 +1,4 @@
 [user]
-  email = leoniv.vlasov@gmail.com
   name = Leonid Vlasov
 
 [core]
@@ -8,6 +7,7 @@
   quotePath = 0
   filemode = false
   filemode = false
+	excludesfile = ~/.gitignore
 
 [alias]
   lg = !"git lg1"
