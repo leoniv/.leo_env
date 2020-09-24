@@ -3,8 +3,8 @@ function s:SetTagBarMapping() abort
 endfunction
 call s:SetTagBarMapping()
 
-function s:SetFlyGrepMapping() abort
-  nnoremap <leader>g :FlyGrep<cr>
-  let g:spacevim_data_dir = '~/.cache'
+" Require install coc-lists
+function s:SetCocListGrepMapping() abort
+  nnoremap <leader>g :CocList grep<cr>
 endfunction
-call s:SetFlyGrepMapping()
+call s:SetCocListGrepMapping()
