@@ -6,7 +6,7 @@ endfunction
 call s:SetVimSessionParams()
 
 function s:SetNerdTreeParams()
-  let g:NERDTreeIndicatorMapCustom = {
+  let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ "Modified"  : "✹",
       \ "Staged"    : "✚",
       \ "Untracked" : "✭",
@@ -19,7 +19,7 @@ function s:SetNerdTreeParams()
       \ "Unknown"   : "?"
       \ }
   map <C-n> :NERDTreeToggle<CR>
-  let g:NERDTreeShowIgnoredStatus = 1
+  let g:NERDTreeGitStatusShowIgnored= 1
   let g:NERDTreeSortHiddenFirst = 1
   let g:NERDTreeShowHidden = 1
 endfunction
