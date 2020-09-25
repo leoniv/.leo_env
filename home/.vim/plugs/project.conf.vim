@@ -19,7 +19,7 @@ function s:SetNerdTreeParams()
       \ "Unknown"   : "?"
       \ }
   map <C-n> :NERDTreeToggle<CR>
-  let g:NERDTreeGitStatusShowIgnored= 1
+  let g:NERDTreeGitStatusShowIgnored= 0
   let g:NERDTreeSortHiddenFirst = 1
   let g:NERDTreeShowHidden = 1
 endfunction
