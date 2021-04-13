@@ -13,14 +13,13 @@
   "diagnostic.locationlist": true,
   "diagnostic.checkCurrentLine": true,
   "vimlsp.diagnostic.enable": true,
-  "coc.preferences.jumpCommand": "tabe",
   "coc.preferences.messageLevel": "error",
   "coc.preferences.hoverTarget": "float",
   "signature.target": "echo",
   "signature.enable": true,
   "signature.triggerSignatureWait": 150,
   "signature.hideOnTextChange": true,
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "codeLens.separator": "‣",
   "suggest.enablePreview": true,
   "suggest.echodocSupport": true,
@@ -59,16 +58,16 @@
     "org.mockito.Answers.*"
   ],
   "java.completion.filteredTypes": [
-        "com.sun.*",
-        "javax.*",
-        "jdk.*",
-        "sun.awt.*",
-        "sun.swing.*",
-        "java.awt.*",
-        "org.graalvm.*",
-        "sun.jvm.*",
-        "org.w3c.*",
-        "org.omg.*"
+    "com.sun.*",
+    "javax.*",
+    "jdk.*",
+    "sun.awt.*",
+    "sun.swing.*",
+    "java.awt.*",
+    "org.graalvm.*",
+    "sun.jvm.*",
+    "org.w3c.*",
+    "org.omg.*"
   ],
   "java.implementationsCodeLens.enabled": true,
   "java.completion.guessMethodArguments": true,
@@ -81,6 +80,23 @@
       ],
       "disableDiagnostics": true,
       "trace.server": "off"
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": [
+        "--lsp"
+      ],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": [
+        "haskell",
+        "lhaskell"
+      ]
     }
   },
   "java.errors.incompleteClasspath.severity": "ignore"

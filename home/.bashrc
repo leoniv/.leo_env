@@ -250,3 +250,5 @@ export PATH=$PATH:$LEO_ENV_PATH/opt/bin:~/.local/bin/
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 alias sbt-vim='vim -c "set nonumber" -c "set laststatus=0" -c "term" -c  "vspl term://sbt"'
+if [ -e /home/leo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/leo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+[ -f "/home/leo/.ghcup/env" ] && source "/home/leo/.ghcup/env" # ghcup-env
