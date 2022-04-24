@@ -36,6 +36,8 @@ bindsym $mod+l exec loginctl lock-session
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Compositor
+exec_always --no-startup-id "killall -q picom; picom -b"
 # Automount USB
 exec --no-startup-id udiskie
 # Dunst
@@ -62,12 +64,12 @@ floating_modifier $mod
 # Focus doesn't follow the mouse
 focus_follows_mouse no
 
-## Maximum width for floating windows
-#floating_minimum_size 400 x 350
+# Maximum width for floating windows
+floating_minimum_size 400 x 350
 #floating_maximum_size 1800 x 900
-#
-## (1920 - 10)/2 and (1080 - 10)/2
-#for_window [class=".*"] floating enable
+
+# Floating for pavucontrol
+for_window [title="Volume Control"] floating enable resize set 600 300 focus
 #for_window [class=".*"] resize set 955 535
 #for_window [class=".*"] focus
 
@@ -84,6 +86,14 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+
+# Rofi
+#bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -config $HOME/.config/rofi/themes/launcher.rasi
+#bindsym $mod+Tab exec --no-startup-id rofi -show window -show-icons -config ~/.config/rofi/themes/launcher-small.rasi
+#bindsym $mod+9 exec --no-startup-id $HOME/.config/rofi/RofiScripts/i3stratch.py
+#bindsym $mod+y exec --no-startup-id $HOME/.config/rofi/RofiScripts/Powermenu.sh
+# rofi-calc - useful calc tool
+bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # change focus
 #bindsym $mod+j focus left
@@ -128,7 +138,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent

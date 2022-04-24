@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+ICON_CONNECTED="up"
+ICON_DISCONNECTED="down"
+
+vpn_report() {
+  nmcli c | grep vpn | awk '{print $1"|"$4}' \
+    | sed "s/|--/: $ICON_DISCONNECTED/" \
+    | sed "s/|.\+/: $ICON_CONNECTED/"
+}
+
+# cases for polybar user_module.ini
+case "$1" in
+	"up") vpn_report | grep $ICON_CONNECTED;;
+  "down") vpn_report | grep $ICON_DISCONNECTED;;
+esac

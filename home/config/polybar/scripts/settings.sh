@@ -2,8 +2,7 @@
 # Menu options
 menu=(" Power off" " Reboot" " Open sound settings (pavucontrol)")
 #  " Set HDMI as mirror screen" " Set HDMI as screen, that right of eDP-1" " Turn off HDMI")
-rofi="rofi -dmenu -sort -matching glob"
-#-theme ~/.config/rofi/GreatSetFlag.rasi"
+rofi="rofi -dmenu -sort -matching glob -theme ~/.config/rofi/themes/launcher.rasi"
 variable=""
 for i in "${menu[@]}";
 do variable="$variable$i\n";
