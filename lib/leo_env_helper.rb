@@ -46,6 +46,12 @@ module LeoEnvHelper
     end
   end
 
+  class ConfigFile < DotFile
+    def initialize(path, home)
+      super path, File.join(home, ".config")
+    end
+  end
+
   class Installer
     attr_reader :home
     def initialize(home)
@@ -60,8 +66,16 @@ module LeoEnvHelper
       end
     end
 
+    def configfiles
+      Dir.glob(File.join(REPO_ROOT, 'home', 'config', '*')).select do |f|
+        File.basename(f) != '.' && File.basename(f) != '..'
+      end.map do |f|
+        ConfigFile.new(f, home)
+      end
+    end
+
     def run
-      dotfiles.each do |dot_file|
+      (dotfiles + configfiles).each do |dot_file|
         dot_file.link
       end
 
