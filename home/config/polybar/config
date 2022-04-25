@@ -35,9 +35,9 @@ font-3 = FontAwesome5Brands:style=Regular:size=12;4
 
 modules-left = i3
 modules-center = xwindow
-modules-right = pulseaudio xkeyboard memory cpu wlan vpn battery date
+modules-right = pulseaudio xkeyboard wlan vpn battery date
 
-tray-position = center
+tray-position = right
 tray-padding = 0
 tray-detached = false
 tray-maxsize = 16
