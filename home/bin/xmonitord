@@ -1,33 +1,6 @@
 #!/usr/bin/env bash
 
-getActive() {
-  echo $(xrandr --listactivemonitors | awk '{print $4}')
-}
-
-getConnected() {
-  echo $(xrandr -q | grep -e "\Wconnected" | awk '{print $1}')
-}
-
-offDisconnected() {
-  for i in `getActive`; do
-    if [ -z "$(echo `getConnected` | grep $i)" ]; then
-       echo off monitor: $i
-       autorandr --change
-     fi
-  done
-}
-
-onConnected() {
-  for i in `getConnected`; do
-    if [ -z "$(echo `getActive` | grep $i)" ]; then
-       echo on monitor: $i
-       autorandr --change
-     fi
-  done
-}
-
 while true; do
-  offDisconnected
-  onConnected
-  sleep 1
+  $(dirname $0)/xmonitor-toggle
+  sleep 2
 done
