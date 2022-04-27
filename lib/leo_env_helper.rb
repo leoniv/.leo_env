@@ -52,6 +52,12 @@ module LeoEnvHelper
     end
   end
 
+  class BinFile < DotFile
+    def initialize(path, home)
+      super path, File.join(home, "bin")
+    end
+  end
+
   class Installer
     attr_reader :home
     def initialize(home)
@@ -74,11 +80,22 @@ module LeoEnvHelper
       end
     end
 
-    def run
-      (dotfiles + configfiles).each do |dot_file|
+    def binfiles
+      Dir.glob(File.join(REPO_ROOT, 'home', 'bin', '*')).select do |f|
+        File.basename(f) != '.' && File.basename(f) != '..'
+      end.map do |f|
+        BinFile.new(f, home)
+      end
+    end
+
+    def setup_files
+      (dotfiles + configfiles + binfiles).each do |dot_file|
         dot_file.link
       end
+    end
 
+    def install
+      setup_files
       Plug.new.setup.plugin_install
     end
   end
