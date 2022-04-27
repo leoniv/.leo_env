@@ -7,10 +7,6 @@ LID_PATH=/proc/acpi/button/lid/LID/state
 OPEN=open
 CLOSE=close
 
-getLidState() {
-   cat $LID_PATH | awk '{print $2}'
-}
-
 getPrimary() {
   actual=getConnectedPrimary
   if [ -z "$actual" ]; then
@@ -21,20 +17,23 @@ getPrimary() {
 }
 
 getConnected() {
+  lidState=$(cat $LID_PATH | awk '{print $2}')
   actual=$(xrandr -q | grep -e "\Wconnected" | awk '{print $1}')
-  if [ "$(getLidState)" == $OPEN ]; then
+  if [ "$lidState" == $OPEN ]; then
     echo $actual
   else
     echo $actual | sed "s/$PRIMARY_DEF//g"
   fi
 }
-
-getVeryLeftActive(){
-  echo `getActive` | awk "{print $1}"
-}
+CONNECTED=$(getConnected)
 
 getActive() {
   echo $(xrandr --listactivemonitors | awk '{print $4}')
+}
+ACTIVE=$(getActive)
+
+getVeryLeftActive(){
+  echo $ACTIVE | awk "{print $1}"
 }
 
 getConnectedPrimary() {
@@ -55,8 +54,8 @@ getRightOrLeftOf() {
 }
 
 offDisconnected() {
-  for i in `getActive`; do
-    if [ -z "$(echo `getConnected` | grep $i)" ]; then
+  for i in $ACTIVE; do
+    if [ -z "$(echo $CONNECTED | grep $i)" ]; then
       echo off monitor: $i
       xrandr --output $i --off
      fi
@@ -64,7 +63,7 @@ offDisconnected() {
 }
 
 onConnected() {
-  for i in `getConnected`; do
+  for i in $CONNECTED; do
     if [ -z "$(echo `getActive` | grep $i)" ]; then
        echo on monitor: $i
        xrandr --output $i $(getRightOrLeftOf $i) --auto
@@ -74,6 +73,7 @@ onConnected() {
 
 fallbackOnDefault() {
   if [ -z "$(getActive)" ]; then
+    echo "emegency on: $PRIMARY_DEF"
     xrandr --output $PRIMARY_DEF --primary --auto
   fi
 }
