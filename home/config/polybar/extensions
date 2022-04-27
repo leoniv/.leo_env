@@ -75,6 +75,8 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
+label-discharging = %time%
+time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
