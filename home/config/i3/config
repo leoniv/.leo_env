@@ -53,6 +53,10 @@ exec --no-startup-id dunst
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Cursor
 exec_always --no-startup-id xsetroot -cursor_name left_ptr
+# Auto switch monitors
+exec --no-startup-id $HOME/bin/xmonitord
+# Manual switch monitor
+bindsym $mod+F7 exec $HOME/bin/xmonitor-toggle
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
