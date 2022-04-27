@@ -252,3 +252,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 alias sbt-vim='vim -c "set nonumber" -c "set laststatus=0" -c "term" -c  "vspl term://sbt"'
 if [ -e /home/leo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/leo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 [ -f "/home/leo/.ghcup/env" ] && source "/home/leo/.ghcup/env" # ghcup-env
+
+alias vim="nvim -u ~/.config/nvim/init.vim"
