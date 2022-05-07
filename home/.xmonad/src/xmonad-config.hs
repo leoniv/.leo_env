@@ -7,6 +7,7 @@ import XMonad.Actions.MouseResize (mouseResize)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts, docks, docksEventHook, manageDocks)
+import XMonad.Hooks.ManageHelpers (doFullFloat, isFullscreen)
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.LayoutModifier
@@ -68,7 +69,8 @@ myManageHook =
     [ title =? "firefox" --> doShift (myWorkspaces !! 0),
       className =? "Google-chrome" --> doShift (myWorkspaces !! 1),
       title =? "Discord" --> doShift (myWorkspaces !! 8),
-      className =? "Thunderbird" --> doShift (myWorkspaces !! 8)
+      className =? "Thunderbird" --> doShift (myWorkspaces !! 8),
+      isFullscreen --> doFullFloat
     ]
 
 myStartupHook :: X ()
@@ -82,9 +84,14 @@ myLayoutHook =
   avoidStruts $
     mouseResize $
       windowArrange $
-        mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
+        T.toggleLayouts floats $
+          mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
   where
-    myDefaultLayout = tall ||| myMagnify ||| monocle
+    myDefaultLayout =
+      tall
+        ||| myMagnify
+        ||| noBorders monocle
+        ||| floats
 
 tall =
   renamed [Replace "tall"] $
@@ -112,6 +119,11 @@ monocle =
         addTabs shrinkText def $
           subLayout [] (smartBorders Simplest) $
             limitWindows 20 Full
+
+floats =
+  renamed [Replace "floats"] $
+    smartBorders $
+      limitWindows 20 simplestFloat
 
 myKeys :: [(String, X ())]
 myKeys =
