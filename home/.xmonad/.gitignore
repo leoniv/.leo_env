@@ -1,0 +1,9 @@
+.stack-work/
+*~tmp/
+tmp/
+stack.yaml.lock
+xmonad.errors
+.vim/
+*.o
+*.hi
+xmonad-x86_64-linux

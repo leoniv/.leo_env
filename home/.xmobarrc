@@ -1,0 +1,44 @@
+Config { overrideRedirect = False
+       , font     = "xft:iosevka-9"
+       , bgColor  = "#333333"
+       , fgColor  = "#EEEEEE"
+       , position = TopW L 95
+       , commands = [Run Cpu
+                        [ "-L", "3"
+                        , "-H", "50"
+                        , "--high"  , "red"
+                        , "--normal", "green"
+                        ] 10
+                    ,Run Alsa "default" "Master"
+                       [ "--template", "Vol: <volumestatus>"
+                       , "--suffix"  , "True"
+                       , "--"
+                       , "--on", ""
+                       ]
+                    ,Run Battery
+                      [ "--template", "Bat: <acstatus>"
+                      , "--Low"     , "15"
+                      , "--high"  , "green"
+                      , "--normal", "green"
+                      , "--low", "red"
+                      , "--"
+                      , "--off"     , "<left> (<timeleft>)"
+                      ] 100
+                    ,Run Date "%Y-%m-%d <fc=#8be9fd>%H:%M:%S%Z</fc>" "date" 10
+                    ,Run XMonadLog
+                    ,Run Wireless "wlp3s0" [
+                      "--template", "<ssid> <qualityvbar>"
+                      , "--Low"     , "15"
+                      , "--high"  , "green"
+                      , "--normal", "orange"
+                      , "--low", "red"
+                    ] 100
+                    ,Run Com "/bin/sh" [
+                      "-c",
+                      "nmcli c | grep vpn | awk '{print $1, $4}' | sed 's/--/DOUN/' | grep -v 'DOUN' | awk '{print $1}'"
+                    ]  "vpn" 100
+                  ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%XMonadLog% }{ %alsa:default:Master% | %wlp3s0wi% <fc=yellow>%vpn%</fc> | %cpu% | %battery% | %date% "
+       }

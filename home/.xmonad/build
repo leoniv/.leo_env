@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec stack ghc \
+    -- \
+     --make src/xmonad-config.hs \
+     -main-is main \
+     -v \
+     -o "$1"
