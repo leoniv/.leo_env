@@ -1,17 +1,39 @@
 import qualified Data.Monoid
 import XMonad
-import XMonad.Actions.CycleWS (Direction1D(..), nextScreen, prevScreen, shiftTo, WSType(..), moveTo)
+import XMonad.Actions.CycleWS (Direction1D (..), WSType (..), moveTo, nextScreen, prevScreen, shiftTo)
+-- Layouts modifiers
+
+import XMonad.Actions.MouseResize (mouseResize)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (manageDocks)
+import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts, docks, docksEventHook, manageDocks)
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Layout.LayoutModifier
+import XMonad.Layout.LimitWindows (decreaseLimit, increaseLimit, limitWindows)
+import XMonad.Layout.Magnifier
+import XMonad.Layout.MultiToggle (EOT (EOT), mkToggle, single, (??))
+import qualified XMonad.Layout.MultiToggle as MT (Toggle (..))
+import XMonad.Layout.MultiToggle.Instances (StdTransformers (MIRROR, NBFULL, NOBORDERS))
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Renamed
+import XMonad.Layout.ResizableTile (ResizableTall (ResizableTall))
+import XMonad.Layout.ShowWName
+import XMonad.Layout.SimpleFloat (shrinkText)
+import XMonad.Layout.Simplest
+import XMonad.Layout.SimplestFloat (simplestFloat)
+import XMonad.Layout.Spacing
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.Tabbed (addTabs)
+import qualified XMonad.Layout.ToggleLayouts as T (ToggleLayout (Toggle), toggleLayouts)
+import XMonad.Layout.WindowArranger (WindowArrangerMsg (..), windowArrange)
+import XMonad.Layout.WindowNavigation
+import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Ungrab
-import qualified XMonad.StackSet as W
 
-main = xmonad . ewmhFullscreen . ewmh . xmobarProp $ myConfig
+main = xmonad . ewmhFullscreen . ewmh . withEasySB (statusBarProp "xmobar" (pure xmobarPP)) defToggleStrutsKey $ myConfig
 
 myTerminal = "kitty"
 
@@ -22,7 +44,8 @@ myConfig =
       focusedBorderColor = "#FFFFFF",
       startupHook = myStartupHook,
       manageHook = myManageHook <+> manageDocks,
-      workspaces = myWorkspaces
+      workspaces = myWorkspaces,
+      layoutHook = myLayoutHook
     }
     `additionalKeysP` myKeys
 
@@ -53,6 +76,43 @@ myStartupHook = do
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "feh --randomize --bg-fill ~/.config/wallpapers/*"
 
+--
+-- The layout hook
+myLayoutHook =
+  avoidStruts $
+    mouseResize $
+      windowArrange $
+        mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
+  where
+    myDefaultLayout = tall ||| myMagnify ||| monocle
+
+tall =
+  renamed [Replace "tall"] $
+    smartBorders $
+      windowNavigation $
+        addTabs shrinkText def $
+          subLayout [] (smartBorders Simplest) $
+            limitWindows 12 $
+              ResizableTall 1 (3 / 100) (1 / 2) []
+
+myMagnify =
+  renamed [Replace "magnify"] $
+    smartBorders $
+      windowNavigation $
+        addTabs shrinkText def $
+          subLayout [] (smartBorders Simplest) $
+            magnifier $
+              limitWindows 12 $
+                ResizableTall 1 (3 / 100) (1 / 2) []
+
+monocle =
+  renamed [Replace "monocle"] $
+    smartBorders $
+      windowNavigation $
+        addTabs shrinkText def $
+          subLayout [] (smartBorders Simplest) $
+            limitWindows 20 Full
+
 myKeys :: [(String, X ())]
 myKeys =
   let lockScreen = "betterlockscreen -l"
@@ -79,5 +139,7 @@ myKeys =
         -- Shifts focused window to prev ws
         ("M-S-<Left>", shiftTo Prev nonNSP >> moveTo Prev nonNSP),
         ("M-S-=", unGrab *> spawn "scrot -s"),
-        ("M-=", unGrab *> spawn "scrot")
+        ("M-=", unGrab *> spawn "scrot"),
+        -- Toggles noborder/full
+        ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
       ]
