@@ -98,7 +98,6 @@ tall =
     smartBorders $
       windowNavigation $
         addTabs shrinkText def $
-          subLayout [] (smartBorders Simplest) $
             limitWindows 12 $
               ResizableTall 1 (3 / 100) (1 / 2) []
 
@@ -136,6 +135,7 @@ myKeys =
       networkConnect = myTerminal ++ " --title=nmtui-connect nmtui-connect"
       volumeControl = myTerminal ++ " pulsemixer"
       nonNSP = WSIs (return (\ws -> W.tag ws /= "NSP"))
+      toggleMonitor = "autorandr -c"
    in [ ("M-l", spawn lockScreen),
         ("<XF86AudioRaiseVolume>", spawn volUp),
         ("<XF86AudioLowerVolume>", spawn volDown),
@@ -144,6 +144,7 @@ myKeys =
         ("<XF86MonBrightnessDown>", spawn lightDown),
         ("M-v", spawn volumeControl),
         ("M-<F8>", spawn networkConnect),
+        ("M-<F9>", spawn toggleMonitor),
         ("M-.", nextScreen),
         ("M-,", prevScreen),
         -- Shifts focused window to next ws
