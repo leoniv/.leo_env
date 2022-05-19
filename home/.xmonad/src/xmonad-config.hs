@@ -6,7 +6,7 @@ import XMonad.Actions.CycleWS (Direction1D (..), WSType (..), moveTo, nextScreen
 import XMonad.Actions.MouseResize (mouseResize)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts, docks, docksEventHook, manageDocks)
+import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts, docks, manageDocks)
 import XMonad.Hooks.ManageHelpers (doFullFloat, isFullscreen)
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
@@ -33,6 +33,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Ungrab
+import XMonad.Layout.LayoutHints (hintsEventHook)
 
 main = xmonad . ewmhFullscreen . ewmh . withEasySB (statusBarProp "xmobar" (pure xmobarPP)) defToggleStrutsKey $ myConfig
 
@@ -46,7 +47,8 @@ myConfig =
       startupHook = myStartupHook,
       manageHook = myManageHook <+> manageDocks,
       workspaces = myWorkspaces,
-      layoutHook = myLayoutHook
+      layoutHook = myLayoutHook,
+      focusFollowsMouse = False
     }
     `additionalKeysP` myKeys
 
@@ -66,7 +68,7 @@ myWorkspaces =
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook =
   composeAll
-    [ title =? "firefox" --> doShift (myWorkspaces !! 0),
+    [ className =? "firefox" --> doShift (myWorkspaces !! 0),
       className =? "Google-chrome" --> doShift (myWorkspaces !! 1),
       title =? "Discord" --> doShift (myWorkspaces !! 8),
       className =? "Thunderbird" --> doShift (myWorkspaces !! 8),
@@ -135,16 +137,16 @@ myKeys =
       networkConnect = myTerminal ++ " --title=nmtui-connect nmtui-connect"
       volumeControl = myTerminal ++ " pulsemixer"
       nonNSP = WSIs (return (\ws -> W.tag ws /= "NSP"))
-      toggleMonitor = "autorandr -c"
+      toggleMonitor = "xmonitor-toggle"
    in [ ("M-l", spawn lockScreen),
-        ("<XF86AudioRaiseVolume>", spawn volUp),
-        ("<XF86AudioLowerVolume>", spawn volDown),
-        ("<XF86AudioMute>", spawn volMute),
-        ("<XF86MonBrightnessUp>", spawn lightUp),
-        ("<XF86MonBrightnessDown>", spawn lightDown),
+        ("M-<F3>", spawn volUp),
+        ("M-<F2>", spawn volDown),
+        ("M-<F1>", spawn volMute),
+        ("M-<F6>", spawn lightUp),
+        ("M-<F5>", spawn lightDown),
         ("M-v", spawn volumeControl),
         ("M-<F8>", spawn networkConnect),
-        ("M-<F9>", spawn toggleMonitor),
+        ("M-<F7>", spawn toggleMonitor),
         ("M-.", nextScreen),
         ("M-,", prevScreen),
         -- Shifts focused window to next ws
