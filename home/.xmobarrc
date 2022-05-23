@@ -37,8 +37,9 @@ Config { overrideRedirect = False
                       "-c",
                       "nmcli c | grep vpn | awk '{print $1, $4}' | sed 's/--/DOUN/' | grep -v 'DOUN' | awk '{print $1}'"
                     ]  "vpn" 100
+                   ,Run Kbd [("us", "US"), ("ru", "RU")]
                   ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %alsa:default:Master% | %wlp3s0wi% <fc=yellow>%vpn%</fc> | %cpu% | %battery% | %date% "
+       , template = "%XMonadLog% }{ %kbd% | %alsa:default:Master% | %wlp3s0wi% <fc=yellow>%vpn%</fc> | %cpu% | %battery% | %date% "
        }
