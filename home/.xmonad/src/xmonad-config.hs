@@ -1,15 +1,17 @@
 import qualified Data.Monoid
 import XMonad
 import XMonad.Actions.CycleWS (Direction1D (..), WSType (..), moveTo, nextScreen, prevScreen, shiftTo)
--- Layouts modifiers
+import Data.Ratio
 
+-- Layouts modifiers
 import XMonad.Actions.MouseResize (mouseResize)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts, docks, manageDocks)
-import XMonad.Hooks.ManageHelpers (doFullFloat, isFullscreen)
+import XMonad.Hooks.ManageHelpers (doFullFloat, doRectFloat, isDialog, isFullscreen, doCenterFloat)
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Layout.LayoutHints (hintsEventHook)
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (decreaseLimit, increaseLimit, limitWindows)
 import XMonad.Layout.Magnifier
@@ -29,11 +31,11 @@ import XMonad.Layout.Tabbed (addTabs)
 import qualified XMonad.Layout.ToggleLayouts as T (ToggleLayout (Toggle), toggleLayouts)
 import XMonad.Layout.WindowArranger (WindowArrangerMsg (..), windowArrange)
 import XMonad.Layout.WindowNavigation
+import XMonad.StackSet (RationalRect (RationalRect))
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Ungrab
-import XMonad.Layout.LayoutHints (hintsEventHook)
 
 main = xmonad . ewmhFullscreen . ewmh . withEasySB (statusBarProp "xmobar" (pure xmobarPP)) defToggleStrutsKey $ myConfig
 
@@ -72,6 +74,8 @@ myManageHook =
       className =? "Google-chrome" --> doShift (myWorkspaces !! 1),
       title =? "Discord" --> doShift (myWorkspaces !! 8),
       className =? "Thunderbird" --> doShift (myWorkspaces !! 8),
+      className =? ".blueman-manager-wrapped" --> doCenterFloat,
+      isDialog --> doFloat,
       isFullscreen --> doFullFloat
     ]
 
@@ -90,9 +94,9 @@ myLayoutHook =
           mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
   where
     myDefaultLayout =
-      tall
+      noBorders monocle
         ||| myMagnify
-        ||| noBorders monocle
+        ||| tall
         ||| floats
 
 tall =
@@ -100,8 +104,8 @@ tall =
     smartBorders $
       windowNavigation $
         addTabs shrinkText def $
-            limitWindows 12 $
-              ResizableTall 1 (3 / 100) (1 / 2) []
+          limitWindows 12 $
+            ResizableTall 1 (3 / 100) (1 / 2) []
 
 myMagnify =
   renamed [Replace "magnify"] $
@@ -153,8 +157,7 @@ myKeys =
         ("M-S-<Right>", shiftTo Next nonNSP >> moveTo Next nonNSP),
         -- Shifts focused window to prev ws
         ("M-S-<Left>", shiftTo Prev nonNSP >> moveTo Prev nonNSP),
-        ("M-S-=", unGrab *> spawn "scrot -s"),
-        ("M-=", unGrab *> spawn "scrot"),
+        ("M-=", unGrab *> spawn "flameshot gui"),
         -- Toggles noborder/full
         ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
       ]
