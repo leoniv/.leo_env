@@ -95,7 +95,7 @@ myLayoutHook =
           mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
   where
     myDefaultLayout =
-      noBorders monocle
+      monocle
         ||| myMagnify
         ||| tall
         ||| floats
@@ -120,7 +120,7 @@ myMagnify =
 
 monocle =
   renamed [Replace "monocle"] $
-    smartBorders $
+    noBorders $
       windowNavigation $
         addTabs shrinkText def $
           subLayout [] (smartBorders Simplest) $
