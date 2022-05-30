@@ -83,6 +83,7 @@ myStartupHook :: X ()
 myStartupHook = do
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "feh --randomize --bg-fill ~/.config/wallpapers/*"
+  spawnOnce "systemctl --user start blueman-applet.service"
 
 --
 -- The layout hook
