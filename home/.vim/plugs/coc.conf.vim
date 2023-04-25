@@ -1,5 +1,5 @@
 " use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
@@ -7,10 +7,16 @@ endfunction
 function s:SetTabRemap() abort
   inoremap <silent><expr> <Tab>
         \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<Tab>" :
+        \ CheckBackspace() ? "\<Tab>" :
         \ coc#refresh()
 endfunction
 call s:SetTabRemap()
+
+function s:SetEnterRemap() abort
+  inoremap <silent><expr> <CR>
+    \ coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+endfunction
+call s:SetEnterRemap()
 
 function s:DefineCommands() abort
   augroup coccommand
