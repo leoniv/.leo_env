@@ -1,4 +1,7 @@
-Plug 'skwp/vim-colors-solarized'
+Plug 'w0ng/vim-hybrid'
+Plug 'doums/darcula'
+Plug 'sainnhe/gruvbox-material'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'xsunsmile/showmarks'

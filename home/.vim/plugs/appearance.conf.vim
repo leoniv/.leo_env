@@ -1,18 +1,8 @@
-" Bundle "skwp/vim-colors-solarized"
-function s:SetSolarizedSchemeParams()
-  colorscheme solarized
+function s:SetColorSchemParam() abort
   set background=dark
-  let g:solarized_termcolors=256
-  let g:solarized_contrast="low"
-  let g:solarized_visibility="low"
+  colorscheme gruvbox-material
 endfunction
-"call s:SetSolarizedSchemeParams()
-
-function s:SetGruvBoxColorParam() abort
-  set background=dark
-  colorscheme gruvbox
-endfunction
-call s:SetGruvBoxColorParam()
+call s:SetColorSchemParam()
 
 "Bundle "itchyny/lightline.vim"
 function s:SetLightLineParams()

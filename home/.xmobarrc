@@ -35,7 +35,7 @@ Config { overrideRedirect = False
                     ] 100
                     ,Run Com "/bin/sh" [
                       "-c",
-                      "nmcli c | grep vpn | awk '{print $1, $4}' | sed 's/--/DOUN/' | grep -v 'DOUN' | awk '{print $1}'"
+                      "echo $(nmcli c | grep vpn | awk '{print $1, $4}' | sed 's/--/DOUN/' | grep -v 'DOUN' | awk '{print $1}')"
                     ]  "vpn" 100
                    ,Run Kbd [("us", "US"), ("ru", "RU")]
                   ]
