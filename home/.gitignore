@@ -36,4 +36,5 @@ Session.vim
 .bloop/
 .metals/
 metals.sbt
-.sbtopts
+*/developer/api/.jvmopts
+__pycache__

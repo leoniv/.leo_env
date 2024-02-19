@@ -2,3 +2,4 @@ Plug 'mattn/webapi-vim'
 Plug 'tpope/vim-repeat'
 Plug 'tomtom/tlib_vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

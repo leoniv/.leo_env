@@ -1,5 +1,6 @@
 Plug 'nelstrom/vim-visual-star-search'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 
 "Plug 'skwp/YankRing.vim'
 "Plug 'ctrlpvim/ctrlp.vim'

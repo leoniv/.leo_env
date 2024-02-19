@@ -76,7 +76,7 @@ function! MyFoldText()
 endfunction
 
 function s:SetFolding()
-  set foldmethod=syntax   "syntax may be very slow!
+  set foldmethod=indent "syntax may be very slow!
   set foldnestmax=10      "deepest fold is 10 levels
   set foldlevelstart=1
   set foldenable          "dont fold by default

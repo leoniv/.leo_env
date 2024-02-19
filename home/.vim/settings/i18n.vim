@@ -17,7 +17,13 @@ hi SpellBad cterm=underline
 set wildmenu
 set wcm=<Tab>
 
-menu SetSpell.on  :setlocal spl=ru_yo,en_us spell<CR>
+function EnableSpl()
+  setlocal spl=ru_yo,en_us spell
+  lua vim.o.spellcapcheck = ""
+  lua vim.o.spelloptions = "camel"
+endfunction
+
+menu SetSpell.on :call EnableSpl()<CR>
 menu SetSpell.off :setlocal nospell<CR>
 map <F7> :emenu SetSpell.<Tab>
 " выбор альтернатив:

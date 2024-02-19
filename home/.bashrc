@@ -257,4 +257,8 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
   export XDG_CONFIG_HOME=~/.config
 fi
 
+if [ -f "$HOME/.cargo/env" ]; then
+. "$HOME/.cargo/env"
+fi
+
 alias vim="nvim -u $XDG_CONFIG_HOME/nvim/init.vim"
